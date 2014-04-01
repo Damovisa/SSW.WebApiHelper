@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SSW.WebApiHelper</id>
+    <version>1.0.9</version>
+    <title>SSW Web API Helper</title>
+    <authors>Damian Brady</authors>
+    <owners>SSW</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>-->
+    <iconUrl>http://www.ssw.com.au/ssw/Images/SSWLogo/SSWLogo_NoText_NoShadow.gif</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A helper package for calling RESTful Web API services</description>
+    <copyright>Copyright 2014 SSW</copyright>
+    <tags>REST WebAPI</tags>
+    <dependencies>
+      <dependency id="RestSharpSigned" version="104.1" />
+      <dependency id="Dynamitey" version="1.0.2.0" />
+      <dependency id="Newtonsoft.Json" version="6.0.1" />
+    </dependencies>
+  </metadata>
+</package>
