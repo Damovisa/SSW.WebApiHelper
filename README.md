@@ -46,6 +46,9 @@ Each of the Get, Post, Put, or Delete methods have overloads for the following:
 
 Changes
 -------
+### 1.0.11
+* Fixed overloads that return data so you don't have to supply a parameter
+
 ### 1.0.10
 * Acceptable HTTP Status Codes can be provided per method call if required
 * The `WebApiServiceResponse` object now includes a Uri property showing the calculated URI
