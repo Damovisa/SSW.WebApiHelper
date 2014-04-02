@@ -5,6 +5,7 @@ Helper package for Web API Service calls. Contains a WebApiService class intende
 (and other RESTFUL HTTP services) easy to manage.
 
 When instantiating, you're given the opportunity to supply *valid* HTTP Status Codes. All other statuses will result in a thrown `WebApiException`.
+You can also override these acceptable status codes per method call.
 
 Default Settings
 ----------------
@@ -43,3 +44,8 @@ Each of the Get, Post, Put, or Delete methods have overloads for the following:
 * Pass an anonymous argument and return a `WebApiServiceResponse` with no data
 * Pass an anonymous argument and return a `WebApiServiceResponse<>` with data of a particular type
 
+Changes
+-------
+### 1.0.10
+* Acceptable HTTP Status Codes can be provided per method call if required
+* The `WebApiServiceResponse` object now includes a Uri property showing the calculated URI
