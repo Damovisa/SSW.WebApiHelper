@@ -142,6 +142,46 @@ namespace SSW.WebApiHelper.Test
         }
 
         [TestMethod]
+        public void TestOverrideTestStatusCodes()
+        {
+            var service = new WebApiService(HttpStatusCode.OK, HttpStatusCode.Accepted); // by default, 200 and 202 are fine
+            var obj = new ObjectWithId
+            {
+                Id = "123"
+            };
+            try
+            {
+                // override with OK only
+                var response = service.Get<ObjectWithSuccess, ObjectWithId>(Url, "api/test200Get", obj, new[] {HttpStatusCode.OK});
+                Assert.IsTrue(response.Data.Success);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception thrown by Get: {0}", ex);
+            }
+
+            try
+            {
+                service.Get<ObjectWithSuccess, ObjectWithId>(Url, "api/test202Get", obj, new[] { HttpStatusCode.OK });
+                Assert.Fail("Object returned when exception should have been thrown from a 202");
+            }
+            catch (WebApiException ex)
+            {
+                Assert.AreEqual(HttpStatusCode.Accepted, ex.StatusCode);
+            }
+
+            try
+            {
+                service.Get<ObjectWithSuccess, ObjectWithId>(Url, "api/test300Get", obj, new[] { HttpStatusCode.OK });
+                Assert.Fail("Object returned when exception should have been thrown from a 300");
+            }
+            catch (WebApiException ex)
+            {
+                Assert.AreEqual(HttpStatusCode.MultipleChoices, ex.StatusCode);
+            }
+        }
+
+        [TestMethod]
         public void TestNoArgumentGet()
         {
             var service = new WebApiService();
@@ -213,9 +253,28 @@ namespace SSW.WebApiHelper.Test
             }
             catch (WebApiException ex)
             {
-                Assert.Fail("Exception thrown by Post with object argument: {0}", ex);
+                Assert.Fail("Exception thrown by Get with object argument: {0}", ex);
             }
         }
+
+        [TestMethod]
+        public void TestUriCreatedCorrectly()
+        {
+            var service = new WebApiService();
+            try
+            {
+                var response = service.Get(Url, "api/testObjectArgumentPost/{FirstName}", new {FirstName = "John", LastName = "Smith"});
+
+                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+                Assert.AreEqual(Url + "/api/testObjectArgumentPost/John?LastName=Smith", response.Uri.AbsoluteUri);
+
+            }
+            catch (WebApiException ex)
+            {
+                Assert.Fail("Exception thrown by Get with Object Argument: {0}", ex);
+            }
+        }
+
     }
 
     public class ObjectWithId

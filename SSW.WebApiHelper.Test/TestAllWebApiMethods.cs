@@ -76,6 +76,7 @@ namespace SSW.WebApiHelper.Test
             response.Data.ShouldBeEquivalentTo(_expectedResponse);
         }
 
+        private class Customer { }
 
         /* POST */
 

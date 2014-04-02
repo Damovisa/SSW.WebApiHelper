@@ -82,95 +82,95 @@ namespace SSW.WebApiHelper
 
 
         /* GET */
-        public WebApiServiceResponse Get<TArgument>(string baseUrl, string resource, TArgument argument)
+        public WebApiServiceResponse Get<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequest(baseUrl, resource, Method.GET, argument);
+            return ExecuteRestRequest(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Get(string baseUrl, string resource, dynamic argument)
+        public WebApiServiceResponse Get(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.GET, argument);
+            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Get<TResult>(string baseUrl, string resource, dynamic argument = null) where TResult : new()
+        public WebApiServiceResponse<TResult> Get<TResult>(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.GET, argument);
+            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Get<TResult, TArgument>(string baseUrl, string resource, TArgument argument) where TResult : new()
+        public WebApiServiceResponse<TResult> Get<TResult, TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.GET, argument);
+            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
 
 
         /* POST */
-        public WebApiServiceResponse Post<TArgument>(string baseUrl, string resource, TArgument argument)
+        public WebApiServiceResponse Post<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequest(baseUrl, resource, Method.POST, argument);
+            return ExecuteRestRequest(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Post(string baseUrl, string resource, dynamic argument)
+        public WebApiServiceResponse Post(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.POST, argument);
+            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Post<TResult>(string baseUrl, string resource, dynamic argument = null) where TResult : new()
+        public WebApiServiceResponse<TResult> Post<TResult>(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.POST, argument);
+            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Post<TResult, TArgument>(string baseUrl, string resource, TArgument argument) where TResult : new()
+        public WebApiServiceResponse<TResult> Post<TResult, TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.POST, argument);
+            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
 
 
         /* PUT */
-        public WebApiServiceResponse Put<TArgument>(string baseUrl, string resource, TArgument argument)
+        public WebApiServiceResponse Put<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequest(baseUrl, resource, Method.PUT, argument);
+            return ExecuteRestRequest(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Put(string baseUrl, string resource, dynamic argument)
+        public WebApiServiceResponse Put(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.PUT, argument);
+            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Put<TResult>(string baseUrl, string resource, dynamic argument = null) where TResult : new()
+        public WebApiServiceResponse<TResult> Put<TResult>(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.PUT, argument);
+            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Put<TResult, TArgument>(string baseUrl, string resource, TArgument argument) where TResult : new()
+        public WebApiServiceResponse<TResult> Put<TResult, TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.PUT, argument);
+            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
 
 
         /* DELETE */
-        public WebApiServiceResponse Delete<TArgument>(string baseUrl, string resource, TArgument argument)
+        public WebApiServiceResponse Delete<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequest(baseUrl, resource, Method.DELETE, argument);
+            return ExecuteRestRequest(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Delete(string baseUrl, string resource, dynamic argument)
+        public WebApiServiceResponse Delete(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
-            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.DELETE, argument);
+            return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Delete<TResult>(string baseUrl, string resource, dynamic argument = null) where TResult : new()
+        public WebApiServiceResponse<TResult> Delete<TResult>(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.DELETE, argument);
+            return ExecuteRestRequestDynamicWithResult<TResult>(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse<TResult> Delete<TResult, TArgument>(string baseUrl, string resource, TArgument argument) where TResult : new()
+        public WebApiServiceResponse<TResult> Delete<TResult, TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
-            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.DELETE, argument);
+            return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }
 
 
         /* REST Requests */
-        private WebApiServiceResponse ExecuteRestRequest<TArgument>(string baseUrl, string resource, Method method, TArgument argument)
+        private WebApiServiceResponse ExecuteRestRequest<TArgument>(string baseUrl, string resource, Method method, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             var client = new RestClient(baseUrl);
             RestRequest request;
@@ -182,13 +182,15 @@ namespace SSW.WebApiHelper
             {
                 request = CreateRequestWithJsonBody(resource, argument, method);
             }
+            var successCodes = overrideSuccessStatusCodes ?? _successStatusCodes;
 
+            var uri = client.BuildUri(request);
             var response = client.Execute(request);
 
             // error if anything other than a success status code has been returned
-            if (response.ErrorException == null && _successStatusCodes.Contains(response.StatusCode))
+            if (response.ErrorException == null && successCodes.Contains(response.StatusCode))
             {
-                return new WebApiServiceResponse(response);
+                return new WebApiServiceResponse(response, uri);
             }
 
             var message = response.ErrorException == null
@@ -202,7 +204,7 @@ namespace SSW.WebApiHelper
                 response.ErrorException);
         }
 
-        private WebApiServiceResponse ExecuteRestRequestDynamicVoid(string baseUrl, string resource, Method method, dynamic argument)
+        private WebApiServiceResponse ExecuteRestRequestDynamicVoid(string baseUrl, string resource, Method method, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             var client = new RestClient(baseUrl);
             RestRequest request;
@@ -214,13 +216,15 @@ namespace SSW.WebApiHelper
             {
                 request = CreateRequestWithJsonBodyDynamic(resource, argument, method);
             }
+            var successCodes = overrideSuccessStatusCodes ?? _successStatusCodes;
 
+            var uri = client.BuildUri(request);
             var response = client.Execute(request);
 
             // error if anything other than a success status code has been returned
-            if (response.ErrorException == null && _successStatusCodes.Contains(response.StatusCode))
+            if (response.ErrorException == null && successCodes.Contains(response.StatusCode))
             {
-                return new WebApiServiceResponse(response);
+                return new WebApiServiceResponse(response, uri);
             }
 
             var message = response.ErrorException == null
@@ -234,7 +238,7 @@ namespace SSW.WebApiHelper
                 response.ErrorException);
         }
 
-        private WebApiServiceResponse<TResult> ExecuteRestRequestWithResult<TResult, TArgument>(string baseUrl, string resource, Method method, TArgument argument) where TResult : new()
+        private WebApiServiceResponse<TResult> ExecuteRestRequestWithResult<TResult, TArgument>(string baseUrl, string resource, Method method, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
             var client = new RestClient(baseUrl);
             RestRequest request;
@@ -246,15 +250,17 @@ namespace SSW.WebApiHelper
             {
                 request = CreateRequestWithJsonBody(resource, argument, method);
             }
+            var successCodes = overrideSuccessStatusCodes ?? _successStatusCodes;
 
+            var uri = client.BuildUri(request);
             var response = client.Execute(request);
 
             // error if anything other than a success status code has been returned
             if (response.ResponseStatus == ResponseStatus.Completed
                 && response.ErrorException == null
-                && _successStatusCodes.Contains(response.StatusCode))
+                && successCodes.Contains(response.StatusCode))
             {
-                return new WebApiServiceResponse<TResult>(response);
+                return new WebApiServiceResponse<TResult>(response, uri);
             }
 
             var message = response.ErrorException == null
@@ -268,7 +274,7 @@ namespace SSW.WebApiHelper
                 response.ErrorException);
         }
 
-        private WebApiServiceResponse<TResult> ExecuteRestRequestDynamicWithResult<TResult>(string baseUrl, string resource, Method method, dynamic argument) where TResult : new()
+        private WebApiServiceResponse<TResult> ExecuteRestRequestDynamicWithResult<TResult>(string baseUrl, string resource, Method method, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
             var client = new RestClient(baseUrl);
             RestRequest request;
@@ -280,15 +286,17 @@ namespace SSW.WebApiHelper
             {
                 request = CreateRequestWithJsonBodyDynamic(resource, argument, method);
             }
+            var successCodes = overrideSuccessStatusCodes ?? _successStatusCodes;
 
+            var uri = client.BuildUri(request);
             var response = client.Execute(request);
 
             // error if anything other than a success status code has been returned
             if (response.ResponseStatus == ResponseStatus.Completed
                 && response.ErrorException == null
-                && Enumerable.Contains(_successStatusCodes, response.StatusCode))
+                && successCodes.Contains(response.StatusCode))
             {
-                return new WebApiServiceResponse<TResult>(response);
+                return new WebApiServiceResponse<TResult>(response, uri);
             }
 
             var message = response.ErrorException == null
