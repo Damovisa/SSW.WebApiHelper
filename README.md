@@ -9,8 +9,9 @@ You can also override these acceptable status codes per method call.
 
 Default Settings
 ----------------
-* HTTP Status codes in the 100 and 200 group are considered successful
-* HTTP Status codes in the 300, 400, and 500 range will throw an exception
+* The following HTTP status codes are considered success by default:
+100, 200, 201, 202, 203, 204, 205
+* All other HTTP status codes will throw an exception (you can override this default)
 * Arguments passed to `GET` and `DELETE` methods will be included as URL parameters
 * Arguments passed to `POST` and `PUT` methods will be serialized to JSON and included in the request body
 
@@ -48,6 +49,7 @@ Changes
 -------
 ### 1.0.14
 * Added XML documentation comments
+* Changed default success HTTP Status Codes
 
 ### 1.0.13
 * Included URL in the WebApiException for debugging purposes

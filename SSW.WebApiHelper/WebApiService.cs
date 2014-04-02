@@ -56,7 +56,10 @@ namespace SSW.WebApiHelper
 
         private readonly IEnumerable<HttpStatusCode> _successStatusCodes;
 
-        public WebApiService() : this(true, true, false) { }    // by default we include only 100s and 200s
+        // Include: 100, 200, 201, 202, 203, 204, 205
+        public WebApiService() :
+            this(HttpStatusCode.Continue, HttpStatusCode.OK, HttpStatusCode.Created, HttpStatusCode.Accepted,
+                HttpStatusCode.NonAuthoritativeInformation, HttpStatusCode.NoContent, HttpStatusCode.ResetContent) { }
 
         public WebApiService(bool succeedOn100s, bool succeedOn200s, bool succeedOn300s, bool succeedOn400s = false, bool succeedOn500s = false)
         {
