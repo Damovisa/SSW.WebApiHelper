@@ -87,7 +87,7 @@ namespace SSW.WebApiHelper
             return ExecuteRestRequest(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Get(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
+        public WebApiServiceResponse Get(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
@@ -109,7 +109,7 @@ namespace SSW.WebApiHelper
             return ExecuteRestRequest(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Post(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
+        public WebApiServiceResponse Post(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
@@ -131,7 +131,7 @@ namespace SSW.WebApiHelper
             return ExecuteRestRequest(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Put(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
+        public WebApiServiceResponse Put(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
@@ -153,7 +153,7 @@ namespace SSW.WebApiHelper
             return ExecuteRestRequest(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }
 
-        public WebApiServiceResponse Delete(string baseUrl, string resource, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
+        public WebApiServiceResponse Delete(string baseUrl, string resource, dynamic argument = null, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             return ExecuteRestRequestDynamicVoid(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }

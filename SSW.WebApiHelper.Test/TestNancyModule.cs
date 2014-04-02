@@ -52,6 +52,8 @@ namespace SSW.WebApiHelper.Test
                 }
                 return new { Success = true };
             };
+
+            Get["api/testNullDynamicWithStringResponse"] = _ => "String response";
         }
     }
 }

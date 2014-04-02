@@ -275,6 +275,21 @@ namespace SSW.WebApiHelper.Test
             }
         }
 
+        [TestMethod]
+        public void TestNullDynamicWithStringResponse()
+        {
+            var service = new WebApiService();
+            try
+            {
+                var result = service.Get(Url, "api/testNullDynamicWithStringResponse");
+                Assert.AreEqual("String response", result.Content);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception thrown by Get: {0}", ex);
+            }
+        }
+
     }
 
     public class ObjectWithId
