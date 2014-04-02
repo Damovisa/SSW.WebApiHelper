@@ -46,6 +46,9 @@ Each of the Get, Post, Put, or Delete methods have overloads for the following:
 
 Changes
 -------
+### 1.0.14
+* Added XML documentation comments
+
 ### 1.0.13
 * Included URL in the WebApiException for debugging purposes
 
