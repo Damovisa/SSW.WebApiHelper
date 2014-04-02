@@ -46,6 +46,12 @@ Each of the Get, Post, Put, or Delete methods have overloads for the following:
 
 Changes
 -------
+### 1.0.13
+* Included URL in the WebApiException for debugging purposes
+
+### 1.0.12
+*None: Fix for nuget purposes*
+
 ### 1.0.11
 * Fixed overloads that return no data so you don't have to supply a parameter
 

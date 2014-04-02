@@ -200,7 +200,7 @@ namespace SSW.WebApiHelper
             throw new WebApiException(
                 response.StatusCode,
                 message,
-                baseUrl + "/" + resource,
+                uri.AbsoluteUri,
                 response.ErrorException);
         }
 
@@ -234,7 +234,7 @@ namespace SSW.WebApiHelper
             throw new WebApiException(
                 response.StatusCode,
                 message,
-                baseUrl + "/" + resource,
+                uri.AbsoluteUri,
                 response.ErrorException);
         }
 
@@ -270,7 +270,7 @@ namespace SSW.WebApiHelper
             throw new WebApiException(
                 response.StatusCode,
                 message,
-                baseUrl + "/" + resource,
+                uri.AbsoluteUri,
                 response.ErrorException);
         }
 
@@ -306,7 +306,7 @@ namespace SSW.WebApiHelper
             throw new WebApiException(
                 response.StatusCode,
                 message,
-                baseUrl + "/" + resource,
+                uri.AbsoluteUri,
                 response.ErrorException);
         }
 

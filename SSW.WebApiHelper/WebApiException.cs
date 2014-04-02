@@ -7,12 +7,14 @@ namespace SSW.WebApiHelper
     {
         public HttpStatusCode StatusCode { get; set; }
         public string Content { get; set; }
+        public string Url { get; set; }
 
         public WebApiException(HttpStatusCode statusCode, string content, string url, Exception innerException)
             : base(string.Format("Url: {0}, Status Code: {1}, Content: {2}", url, statusCode, content), innerException)
         {
             StatusCode = statusCode;
             Content = content;
+            Url = url;
         }
     }
 }
