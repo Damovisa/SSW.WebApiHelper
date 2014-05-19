@@ -12,9 +12,7 @@ namespace SSW.WebApiHelper
 {
     public class WebApiService : IWebApiService
     {
-
         #region HttpStatus Groups
-
         private static readonly HttpStatusCode[] HttpStatus100s =
         {
             HttpStatusCode.Continue, HttpStatusCode.SwitchingProtocols
@@ -83,7 +81,6 @@ namespace SSW.WebApiHelper
             _successStatusCodes = successStatusCodes;
         }
 
-
         /* GET */
         public WebApiServiceResponse Get<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
@@ -104,7 +101,6 @@ namespace SSW.WebApiHelper
         {
             return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.GET, argument, overrideSuccessStatusCodes);
         }
-
 
         /* POST */
         public WebApiServiceResponse Post<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
@@ -127,7 +123,6 @@ namespace SSW.WebApiHelper
             return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.POST, argument, overrideSuccessStatusCodes);
         }
 
-
         /* PUT */
         public WebApiServiceResponse Put<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
@@ -148,7 +143,6 @@ namespace SSW.WebApiHelper
         {
             return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.PUT, argument, overrideSuccessStatusCodes);
         }
-
 
         /* DELETE */
         public WebApiServiceResponse Delete<TArgument>(string baseUrl, string resource, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
@@ -171,11 +165,11 @@ namespace SSW.WebApiHelper
             return ExecuteRestRequestWithResult<TResult, TArgument>(baseUrl, resource, Method.DELETE, argument, overrideSuccessStatusCodes);
         }
 
-
         /* REST Requests */
         private WebApiServiceResponse ExecuteRestRequest<TArgument>(string baseUrl, string resource, Method method, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             var client = new RestClient(baseUrl);
+            this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
             {
@@ -210,6 +204,7 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse ExecuteRestRequestDynamicVoid(string baseUrl, string resource, Method method, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             var client = new RestClient(baseUrl);
+            this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
             {
@@ -244,6 +239,7 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse<TResult> ExecuteRestRequestWithResult<TResult, TArgument>(string baseUrl, string resource, Method method, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
             var client = new RestClient(baseUrl);
+            this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
             {
@@ -280,6 +276,7 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse<TResult> ExecuteRestRequestDynamicWithResult<TResult>(string baseUrl, string resource, Method method, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
             var client = new RestClient(baseUrl);
+            this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
             {
@@ -312,7 +309,6 @@ namespace SSW.WebApiHelper
                 uri.AbsoluteUri,
                 response.ErrorException);
         }
-
         
         /* Shared REST Request Creation */
         private static RestRequest CreateRequestWithPropertiesDynamic(string resource, dynamic argument, Method method)
@@ -417,5 +413,25 @@ namespace SSW.WebApiHelper
             }
             return request;
         }
+
+        /// <summary>
+        /// Sets the timeout.
+        /// </summary>
+        /// <param name="client">The rest client.</param>
+        private void SetTimeout(RestClient client)
+        {
+            if (!this.Timeout.HasValue)
+            {
+                return;
+            }
+
+            client.Timeout = this.Timeout.Value;
+        }
+
+        /// <summary>
+        /// Gets or sets the service timeout.
+        /// </summary>
+        /// <value>The timeout value in milliseconds.</value>
+        public int? Timeout { get; set; }
     }
 }
