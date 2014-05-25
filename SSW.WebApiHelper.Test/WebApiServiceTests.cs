@@ -290,6 +290,24 @@ namespace SSW.WebApiHelper.Test
             }
         }
 
+        [TestMethod]
+        public void TestLongRequest_WithSpecifiedTimeout()
+        {
+            var service = new WebApiService();
+            service.Timeout = 600000;
+            var response = service.Get(Url, "api/LongTask");
+
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(WebApiException))]
+        public void TestLongRequest_WithoutTimeout()
+        {
+            var service = new WebApiService();
+            service.Get(Url, "api/LongTask");
+        }
+
     }
 
     public class ObjectWithId

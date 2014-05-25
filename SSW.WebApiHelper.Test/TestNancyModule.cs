@@ -4,6 +4,8 @@ using Nancy.ModelBinding;
 
 namespace SSW.WebApiHelper.Test
 {
+    using System.Threading;
+
     public class TestNancyModule : NancyModule
     {
         public TestNancyModule()
@@ -25,6 +27,17 @@ namespace SSW.WebApiHelper.Test
                 }
                 return new {Request.Query.Id, Success = true};
             };
+
+            Get["/api/LongTask"] = _ =>
+                {
+                    Thread.Sleep(180000);
+                    return Response.AsJson(
+                        new
+                        {
+                            Success = true
+                        }, 
+                        Nancy.HttpStatusCode.OK);
+                };
 
             Get["/api/Test200Get"] = _ => Response.AsJson(new {Success = true}, Nancy.HttpStatusCode.OK);
 
