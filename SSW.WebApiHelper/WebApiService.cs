@@ -424,7 +424,7 @@ namespace SSW.WebApiHelper
         }
 
         /// <summary>
-        /// Sets the timeout.
+        /// Sets the certificate for authentication.
         /// </summary>
         /// <param name="client">The rest client.</param>
         private void SetTimeout(RestClient client)
