@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SSW.WebApiHelper</id>
-    <version>1.0.14</version>
+    <version>1.0.16</version>
     <title>SSW Web API Helper</title>
     <authors>Damian Brady</authors>
     <owners>SSW</owners>
