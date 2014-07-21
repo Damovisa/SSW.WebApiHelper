@@ -10,6 +10,8 @@ using RestSharp;
 
 namespace SSW.WebApiHelper
 {
+    using System.Security.Cryptography.X509Certificates;
+
     public class WebApiService : IWebApiService
     {
         #region HttpStatus Groups
@@ -169,6 +171,8 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse ExecuteRestRequest<TArgument>(string baseUrl, string resource, Method method, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             var client = new RestClient(baseUrl);
+
+            this.SetCertificate(client);
             this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
@@ -204,8 +208,11 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse ExecuteRestRequestDynamicVoid(string baseUrl, string resource, Method method, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null)
         {
             var client = new RestClient(baseUrl);
+            this.SetCertificate(client);
             this.SetTimeout(client);
+            
             RestRequest request;
+            
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
             {
                 request = CreateRequestWithPropertiesDynamic(resource, argument, method);
@@ -239,6 +246,7 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse<TResult> ExecuteRestRequestWithResult<TResult, TArgument>(string baseUrl, string resource, Method method, TArgument argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
             var client = new RestClient(baseUrl);
+            this.SetCertificate(client);
             this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
@@ -276,6 +284,7 @@ namespace SSW.WebApiHelper
         private WebApiServiceResponse<TResult> ExecuteRestRequestDynamicWithResult<TResult>(string baseUrl, string resource, Method method, dynamic argument, IEnumerable<HttpStatusCode> overrideSuccessStatusCodes = null) where TResult : new()
         {
             var client = new RestClient(baseUrl);
+            this.SetCertificate(client);
             this.SetTimeout(client);
             RestRequest request;
             if (new[] { Method.GET, Method.DELETE, Method.HEAD, Method.OPTIONS }.Contains(method))
@@ -429,9 +438,34 @@ namespace SSW.WebApiHelper
         }
 
         /// <summary>
+        /// Sets the certificate for authentication.
+        /// </summary>
+        /// <param name="client">The rest client.</param>
+        private void SetCertificate(RestClient client)
+        {
+            if (this.Certificate == null)
+            {
+                return;
+            }
+
+            if (client.ClientCertificates == null)
+            {
+                client.ClientCertificates = new X509Certificate2Collection();
+            }
+
+            client.ClientCertificates.Add(this.Certificate);
+        }
+
+        /// <summary>
         /// Gets or sets the service timeout.
         /// </summary>
         /// <value>The timeout value in milliseconds.</value>
         public int? Timeout { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service timeout.
+        /// </summary>
+        /// <value>The timeout value in milliseconds.</value>
+        public X509Certificate2 Certificate { get; set; }
     }
 }
