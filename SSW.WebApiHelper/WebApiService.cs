@@ -448,6 +448,11 @@ namespace SSW.WebApiHelper
                 return;
             }
 
+            if (client.ClientCertificates == null)
+            {
+                client.ClientCertificates = new X509Certificate2Collection();
+            }
+
             client.ClientCertificates.Add(this.Certificate);
         }
 
